@@ -93,3 +93,35 @@ class skill: character {
 var Wizard = skill(name: "魔女", buki: "魔法の杖", level: 30, waza: "呪文を唱える")
 print(Wizard.introduction())
 
+
+//生徒によく説明しているもののポケモンクラスです
+class pokemon {
+    var name: String
+    var level: Int
+    
+    init(name: String, level: Int){
+        self.name = name
+        self.level = level
+    }
+    func show_pokemon() -> String {
+        return "\(self.name)です。レベルは\(self.level)です"
+    }
+}
+
+var pikachu = pokemon(name: "ピカチュウ", level: 10)
+print(pikachu.show_pokemon())
+
+//進化するポケモンと進化しないポケモンがいるから、進化するポケモンを紹介するための子クラスを作ってみようという説明をします。
+class evolution: pokemon {
+    var evolution: String
+    
+    init(name: String, level: Int, evolution: String) {
+        self.evolution = evolution
+        super.init(name: name, level: level)
+    }
+    override func show_pokemon() -> String {
+        return "\(self.name)です。レベルは\(self.level)です。進化すると\(self.evolution)です"
+    }
+}
+var raichu = evolution(name: "ピカチュウ", level: 30, evolution: "ライチュウ")
+print(raichu.show_pokemon())
